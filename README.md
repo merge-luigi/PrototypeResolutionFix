@@ -1,91 +1,67 @@
-# Prototype (2009) High Resolution & Widescreen Fix (v1.0)
+# Prototype (2009) — High Resolution & Widescreen Fix
 
-An open-source Python patcher that unlocks high widescreen resolutions (such as **1080p / 1200p+**) for *Prototype (2009)* by patching `prototypeenginef.dll` in-place.
+Python patcher that unlocks 1080p/1440p/4K widescreen for *Prototype (2009)* by patching `prototypeenginef.dll` directly.
 
-Language / Idioma: [English](#english) | [Español](#español)
+🌐 **Language / Idioma**: [English](#english) | [Español](#español)
 
 ---
 
 <a name="english"></a>
-# [UK] English
+## English
 
-## Reverse Engineering Discoveries & Features
+### How to Use
 
-This script neutralizes 3 hardcoded engine bottlenecks inside `prototypeenginef.dll`:
+> Close Prototype before running the script.
 
-| # | Offset | Feature | Impact |
-|---|--------|---------|--------|
-| **1** | `0x2E02B7` | **Safety Cap Removal** | Removes the hardcoded `1280x800` resolution ceiling caused by VRAM overflows on modern GPUs. |
-| **2** | `0x4DFC3C` | **VRAM Menu Bypass** | Prevents graphic quality settings (Shadows, Textures) from forcing themselves to "Low". |
-| **3** | `0x616F20` | **Direct3D 9 Filter Bypass** | Forces `EnumAdapterModes` to accept modern widescreen display modes. |
+```bash
+git clone https://github.com/your-username/PrototypeResolutionFix.git
+cd PrototypeResolutionFix
+python PrototypeResolutionFix.py
+```
 
----
+Then launch Prototype → **Options → Graphics → Resolution** and select your resolution.
 
-## Quick Start Guide
+> **Non-Steam install?** Copy `PrototypeResolutionFix.py` into your game folder (where `prototypef.exe` is) and run it from there.
 
-> **Tip:** Make sure **Prototype is closed** before executing the script.
+### What It Patches
 
-1. **Download or Copy** `PrototypeResolutionFix.py`.
-2. **Place the script** in your Prototype installation directory (where `prototypef.exe` resides), *or run it from any directory* (the script auto-detects Steam installations).
-3. **Run the patcher**:
-   ```bash
-   python PrototypeResolutionFix.py
-   ```
-4. **Launch Prototype**, navigate to **Options -> Graphics -> Resolution**, and select your new widescreen resolution!
+Three hardcoded limits inside `prototypeenginef.dll`:
 
----
+| Offset | Description |
+|---|---|
+| `0x2E02B7` | Removes the `1280x800` hardcoded resolution ceiling |
+| `0x4DFC3C` | Prevents graphics quality from auto-resetting to Low |
+| `0x616F20` | Forces Direct3D 9 to accept high widescreen display modes |
 
-## Safety & Legal Information
-
-> **Note:** **100% Legal & Clean**: This project does **not** distribute copyrighted game binaries (`.dll` or `.exe`). It modifies your legally owned local copy in-place.
-
-- **Automatic Backup**: An unpatched original backup (`prototypeenginef.dll.bak`) is created automatically before any bytes are altered.
+A backup (`prototypeenginef.dll.bak`) is created automatically before any changes are made. MIT License.
 
 ---
-
-## License
-Distributed under the [MIT License](LICENSE).
-
-<br/>
-<hr/>
-<br/>
 
 <a name="español"></a>
-# [ES] Español
+## Español
 
-## Descubrimientos de Ingeniería Inversa y Características
+### Cómo Usarlo
 
-Este script neutraliza 3 cuellos de botella del motor codificados en `prototypeenginef.dll`:
+> Cerrá Prototype antes de ejecutar el script.
 
-| # | Offset | Característica | Impacto |
-|---|--------|----------------|---------|
-| **1** | `0x2E02B7` | **Eliminación del Cap de Seguridad** | Elimina el límite de `1280x800` causado por el desbordamiento de VRAM en placas de video modernas. |
-| **2** | `0x4DFC3C` | **Bypass de VRAM en Menú** | Evita que las opciones de calidad gráfica (sombras, texturas) se fuercen a calidad "Baja". |
-| **3** | `0x616F20` | **Bypass de Filtro Direct3D 9** | Fuerza a `EnumAdapterModes` a reconocer modos de pantalla panorámica modernos. |
+```bash
+git clone https://github.com/tu-usuario/PrototypeResolutionFix.git
+cd PrototypeResolutionFix
+python PrototypeResolutionFix.py
+```
 
----
+Luego abrí Prototype → **Opciones → Gráficos → Resolución** y elegí tu resolución.
 
-## Guía de Inicio Rápido
+> **¿Instalación fuera de Steam?** Copiá `PrototypeResolutionFix.py` a la carpeta del juego (donde está `prototypef.exe`) y ejecutalo desde ahí.
 
-> **Consejo:** Asegúrate de **cerrar Prototype** antes de ejecutar el parcheador.
+### Qué Parchea
 
-1. **Descarga o Copia** `PrototypeResolutionFix.py`.
-2. **Ubica el script** en la carpeta de instalación de Prototype (donde se encuentra `prototypef.exe`), *o ejecútalo desde cualquier carpeta* (el script detecta instalaciones de Steam automáticamente).
-3. **Ejecuta el parcheador**:
-   ```bash
-   python PrototypeResolutionFix.py
-   ```
-4. **Abre Prototype**, ve a **Opciones -> Gráficos -> Resolución** y selecciona tu nueva resolución panorámica.
+Tres límites codificados dentro de `prototypeenginef.dll`:
 
----
+| Offset | Descripción |
+|---|---|
+| `0x2E02B7` | Elimina el límite de resolución hardcodeado a `1280x800` |
+| `0x4DFC3C` | Evita que la calidad gráfica se fuerce a Baja automáticamente |
+| `0x616F20` | Fuerza a Direct3D 9 a reconocer modos panorámicos en alta resolución |
 
-## Información Legal y de Seguridad
-
-> **Nota:** **100% Legal y Limpio**: Este proyecto **no** distribuye binarios protegidos por derechos de autor (`.dll` o `.exe`). Modifica tu copia local de forma segura.
-
-- **Respaldo Automático**: Se genera automáticamente una copia de seguridad original (`prototypeenginef.dll.bak`) antes de modificar cualquier byte.
-
----
-
-## Licencia
-Distribuido bajo la Licencia [MIT](LICENSE).
+Se genera automáticamente un respaldo (`prototypeenginef.dll.bak`) antes de cualquier cambio. Licencia MIT.
