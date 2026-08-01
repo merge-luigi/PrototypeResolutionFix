@@ -3,7 +3,7 @@
 ===============================================================================
  Prototype (2009) - High Resolution & Widescreen Fix (v1.0)
 ===============================================================================
- Developed via Reverse Engineering by Antigravity AI & Community.
+ Developed via Reverse Engineering by Antigravity AI & Luigi.
 
  This script safely patches `prototypeenginef.dll` in-place to unlock higher
  widescreen resolutions (1080p, 1200p+) and bypass modern hardware VRAM
